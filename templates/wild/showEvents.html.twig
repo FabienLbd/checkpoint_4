@@ -3,33 +3,44 @@
 {% block title %}Nos évènements{% endblock %}
 
 {% block body %}
-    <div class="container row d-flex justify-content-center mx-auto py-5 show-events">
-        {% for event in events %}
-            <div class="card col-lg-4" style="width: 18rem;">
-                <img src="/public/uploads/event/{{ event.eventImageName }}" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{ event.name | nl2br }}</h5>
-                    <p class="card-text">{{ event.description }}</p>
-                    <div class="d-flex justify-content-center">
-                        <table class="p-2">
-                            <thead>
-                                <tr>
-                                    <th>Tarif</th>
-                                    <th>Prix</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                            {% for price in event.prices %}
-                                <tr>
-                                    <td>{{ price.name }}</td>
-                                    <td>{{ price.amount }} euros</td>
-                                </tr>
-                            {% endfor %}
-                            </tbody>
-                        </table>
+    <div class="event-background">
+        <div class="container show-events mx-auto">
+            <div class="text-center mb-5">
+                <h1>Nos évènements</h1>
+            </div>
+            {% for event in events %}
+                <div class="d-flex my-2 row">
+                    <div class="col-lg-4 mx-auto">
+                        <img src="/uploads/event/{{ event.eventImageName }}"
+                              alt="...">
+                    </div>
+                    <div class="card-body text-justify col-lg-7 offset-1">
+                        <h2>{{ event.name }}</h2>
+                        <p>{{ event.description }}</p>
+                        <p>Date du show : {{ event.performanceDate|date("m/d/Y") }}</p>
+                        <p>Lieu du show : {{ event.town }} {{ event.country }}</p>
+                        <div>
+                            <table class="p-2">
+                                <thead>
+                                    <tr>
+                                        <th>Tarif : </th>
+                                        <th>Prix : </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                {% for price in event.prices %}
+                                    <tr>
+                                        <td>{{ price.name }}</td>
+                                        <td>{{ price.amount }} euros</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        {% endfor %}
+                <hr>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

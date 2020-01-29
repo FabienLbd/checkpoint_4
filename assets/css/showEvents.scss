@@ -1,3 +1,24 @@
-.show-events {
-
+.event-background {
+  background-color: $white;
+  .show-events {
+    padding-top: 8rem;
+    h1 {
+      font-family: $pacifico;
+      font-size: 4rem;
+      color: $lightBlack;
+    }
+    img {
+      border-radius: 7px;
+      height: 20rem;
+      width: auto;
+    }
+    h2 {
+      font-family: $pacifico;
+      color: $green;
+      font-size: 2rem;
+    }
+    p {
+      font-family: $roboto;
+    }
+  }
 }

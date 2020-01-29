@@ -1,0 +1,23 @@
+.crud-home-background {
+  background-image: url("../images/crud-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 88vh;
+  .admin-home {
+    padding-top: 10rem;
+    .admin-card {
+      background-color: $lightBlack;
+      border: none;
+      height: 10rem;
+      p {
+        font-family: $pacifico;
+        font-size: 2rem;
+        color: $green;
+      }
+      a {
+        text-decoration: none;
+      }
+
+    }
+  }
+}

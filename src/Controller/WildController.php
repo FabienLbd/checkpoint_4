@@ -5,7 +5,9 @@ namespace App\Controller;
 use App\Entity\Act;
 use App\Entity\Event;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
@@ -18,10 +20,14 @@ class WildController extends AbstractController
      * @param EntityManagerInterface $em
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function showEvents(EntityManagerInterface $em)
+    public function showEvents(EntityManagerInterface $em, PaginatorInterface $paginator,Request $request)
     {
-        $events = $em->getRepository(Event::class)->findAll();
+        $events = $paginator->paginate(
+            $em->getRepository(Event::class)->findAll(),
+            $request->query->getInt('page', 1),
+            3
 
+        );
         return $this->render('wild/showEvents.html.twig', [
             'events' => $events,
         ]);

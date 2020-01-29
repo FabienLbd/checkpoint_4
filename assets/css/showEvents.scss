@@ -21,4 +21,16 @@
       font-family: $roboto;
     }
   }
+  .page-item.active {
+    .page-link {
+      background-color: $green;
+      border-color: $green;
+      color: $white;
+    }
+  }
+  .page-item {
+    .page-link {
+      color: $green;
+    }
+  }
 }

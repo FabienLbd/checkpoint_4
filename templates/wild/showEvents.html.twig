@@ -6,7 +6,7 @@
     <div class="container row d-flex justify-content-center mx-auto py-5 show-events">
         {% for event in events %}
             <div class="card col-lg-4" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
+                <img src="/public/uploads/event/{{ event.eventImageName }}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{ event.name | nl2br }}</h5>
                     <p class="card-text">{{ event.description }}</p>

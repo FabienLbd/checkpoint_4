@@ -2,11 +2,16 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
+ * @Vich\Uploadable()
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -58,6 +63,55 @@ class Event
      * @ORM\ManyToMany(targetEntity="App\Entity\Price", mappedBy="events")
      */
     private $prices;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $eventImageName;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="event", fileNameProperty="eventImageName")
+     */
+    private $eventImagefile;
+
+    /**
+     * @return mixed
+     */
+    public function getEventImageName()
+    {
+        return $this->eventImageName;
+    }
+
+    /**
+     * @param mixed $eventImageName
+     */
+    public function setEventImageName($eventImageName): void
+    {
+        $this->eventImageName = $eventImageName;
+    }
+
+    /**
+     * @return null|File
+     */
+    public function getEventImagefile(): ?File
+    {
+        return $this->eventImagefile;
+    }
+
+    /**
+     * @param File $eventImagefile
+     * @return Event
+     * @throws \Exception
+     */
+    public function setEventImagefile(File $eventImagefile): Event
+    {
+        $this->eventImagefile = $eventImagefile;
+        if ($this->eventImagefile instanceof UploadedFile) {
+            $this->updatedAt = new DateTime();
+        }
+        return $this;
+    }
 
     public function __construct()
     {

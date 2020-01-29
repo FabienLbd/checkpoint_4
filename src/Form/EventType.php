@@ -11,6 +11,8 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class EventType extends AbstractType
 {
@@ -28,7 +30,23 @@ class EventType extends AbstractType
                 'expanded'     => true,
                 'multiple'     => true,
                 'by_reference' => false,
-            ]);
+            ])
+            ->add('eventImageFile', FileType::class, [
+                'label' => 'Image de l\'évènement',
+                'required' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '2000k',
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                            'application/pdf'
+                        ],
+                        'mimeTypesMessage' => 'Formats de fichier acceptés : Jpeg, Png',
+                    ])
+                ],
+            ])
+        ;
     }
 
     public function configureOptions(OptionsResolver $resolver)

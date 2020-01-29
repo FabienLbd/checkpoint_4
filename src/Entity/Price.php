@@ -29,7 +29,7 @@ class Price
     private $amount;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Event", mappedBy="price")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Event", inversedBy="prices")
      */
     private $events;
 
@@ -79,7 +79,6 @@ class Price
     {
         if (!$this->events->contains($event)) {
             $this->events[] = $event;
-            $event->addPrice($this);
         }
 
         return $this;
@@ -89,9 +88,9 @@ class Price
     {
         if ($this->events->contains($event)) {
             $this->events->removeElement($event);
-            $event->removePrice($this);
         }
 
         return $this;
     }
+
 }

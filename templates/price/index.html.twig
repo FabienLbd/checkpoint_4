@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des tarifs{% endblock %}
+
+{% block body %}
+    <div class="container py-3">
+        <h1>Liste des tarifs</h1>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Montant</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for price in prices %}
+                <tr>
+                    <td>{{ price.name }}</td>
+                    <td>{{ price.amount }}</td>
+                    <td>
+                        <a href="{{ path('price_show', {'id': price.id}) }}">Voir</a>
+                        <a href="{{ path('price_edit', {'id': price.id}) }}">Editer</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="4">Aucun tarif trouvé ...</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('price_new') }}">Create un tarif</a>
+    </div>
+{% endblock %}

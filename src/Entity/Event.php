@@ -8,6 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\EventRepository")
+ * @ORM\HasLifecycleCallbacks
  */
 class Event
 {
@@ -54,13 +55,13 @@ class Event
     private $updatedAt;
 
     /**
-     * @ORM\ManyToMany(targetEntity="App\Entity\Price", inversedBy="events")
+     * @ORM\ManyToMany(targetEntity="App\Entity\Price", mappedBy="events")
      */
-    private $price;
+    private $prices;
 
     public function __construct()
     {
-        $this->price = new ArrayCollection();
+        $this->prices = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -155,15 +156,16 @@ class Event
     /**
      * @return Collection|Price[]
      */
-    public function getPrice(): Collection
+    public function getPrices(): Collection
     {
-        return $this->price;
+        return $this->prices;
     }
 
     public function addPrice(Price $price): self
     {
-        if (!$this->price->contains($price)) {
-            $this->price[] = $price;
+        if (!$this->prices->contains($price)) {
+            $this->prices[] = $price;
+            $price->addEvent($this);
         }
 
         return $this;
@@ -171,10 +173,35 @@ class Event
 
     public function removePrice(Price $price): self
     {
-        if ($this->price->contains($price)) {
-            $this->price->removeElement($price);
+        if ($this->prices->contains($price)) {
+            $this->prices->removeElement($price);
+            $price->removeEvent($this);
         }
 
         return $this;
+    }
+
+    /**
+     * @ORM\PrePersist
+     */
+    public function handleCreationDate()
+    {
+        if ($this->getCreatedAt() === null) {
+            $this->setCreatedAt(new \DateTimeImmutable());
+        }
+        $this->setUpdatedAt(new \DateTimeImmutable());
+    }
+
+    /**
+     * @ORM\PreUpdate
+     */
+    public function handleUpdateDate()
+    {
+        $this->setUpdatedAt(new \DateTimeImmutable());
+    }
+
+    public function getTcfExam(): ?bool
+    {
+        return $this->tcfExam;
     }
 }

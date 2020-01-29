@@ -1,0 +1,20 @@
+nav {
+  .brand {
+    font-family: $pacifico;
+    font-size: 2rem;
+    color: $black;
+  }
+  .navbar-nav {
+    .nav-link {
+      color: $green;
+    }
+  }
+  .nav-list {
+    a {
+      font-family: $pacifico;
+      font-size: 1.4rem;
+    }
+
+  }
+  background-color: $white;
+}

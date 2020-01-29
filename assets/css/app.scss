@@ -1,4 +1,9 @@
 @import "~bootstrap/scss/bootstrap";
-body {
-    background-color: lightblue;
-}
+@import url('https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
+@import "vars";
+@import "home";
+@import "nav";
+
+

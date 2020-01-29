@@ -1,7 +1,33 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello!{% endblock %}
+{% block title %}Bienvenue au wild circus!{% endblock %}
 
 {% block body %}
-
+    <div class="container-fluid p-0 home">
+        <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+            <div class="carousel-inner slider-container">
+                <div class="carousel-item active">
+                    <img src="{{ asset('build/images/circus_party.jpg') }}" class="d-block w-100" alt="circus">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('build/images/clown.jpg') }}" class="d-block w-100" alt="clown">
+                </div>
+                <div class="carousel-item">
+                    <img src="{{ asset('build/images/purple_wheel.jpg') }}" class="d-block w-100" alt="big wheel">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="w-100 p-O m-0 about">
+        <div class="container text-center py-5 px-5">
+            <h1 class="mb-3">Qui sommes nous ?</h1>
+            <p>Inter quos Paulus eminebat notarius ortus in Hispania, glabro quidam sub vultu latens,
+                odorandi vias periculorum occultas perquam sagax. is in Brittanniam missus ut militares quosdam perduceret
+                ausos conspirasse Magnentio, cum reniti non possent, iussa licentius supergressus fluminis modo fortunis
+                conplurium sese repentinus infudit et ferebatur per strages multiplices ac ruinas, vinculis membra
+                ingenuorum adfligens et quosdam obterens manicis, crimina scilicet multa consarcinando a veritate longe
+                discreta. unde admissum est facinus impium, quod Constanti tempus nota inusserat sempiterna.
+            </p>
+        </div>
+    </div>
 {% endblock %}

@@ -200,8 +200,4 @@ class Event
         $this->setUpdatedAt(new \DateTimeImmutable());
     }
 
-    public function getTcfExam(): ?bool
-    {
-        return $this->tcfExam;
-    }
 }

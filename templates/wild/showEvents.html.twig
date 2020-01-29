@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos évènements{% endblock %}
+
+{% block body %}
+    <div class="container row d-flex justify-content-center mx-auto py-5 show-events">
+        {% for event in events %}
+            <div class="card col-lg-4" style="width: 18rem;">
+                <img src="..." class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.name | nl2br }}</h5>
+                    <p class="card-text">{{ event.description }}</p>
+                    <div class="d-flex justify-content-center">
+                        <table class="p-2">
+                            <thead>
+                                <tr>
+                                    <th>Tarif</th>
+                                    <th>Prix</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {% for price in event.prices %}
+                                <tr>
+                                    <td>{{ price.name }}</td>
+                                    <td>{{ price.amount }} euros</td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Act index{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Liste des performances</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Créé le</th>
+                    <th>Mis à jour le</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for act in acts %}
+                <tr>
+                    <td>{{ act.name }}</td>
+                    <td>{{ act.description }}</td>
+                    <td>{{ act.createdAt ? act.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>{{ act.updatedAt ? act.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
+                    <td>
+                        <a href="{{ path('act_show', {'id': act.id}) }}">show</a>
+                        <a href="{{ path('act_edit', {'id': act.id}) }}">edit</a>
+                    </td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td colspan="6">Il n'y a pas de performance ...</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <a href="{{ path('act_new') }}">Ajouter une performance</a>
+    </div>
+{% endblock %}

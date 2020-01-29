@@ -1,0 +1,35 @@
+.background-container {
+  background-image: url("../images/admin-background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 88vh;
+  .login {
+    padding-top: 7rem;
+    .login-box {
+      background-color: $lightBlack;
+      padding: 2rem;
+      border-radius: 5px;
+      h1 {
+        font-family: $pacifico;
+        color: $green;
+        font-size: 2rem;
+      }
+      label {
+        font-family: $roboto;
+        color: $white;
+      }
+      .login-btn {
+        background-color: transparent;
+        border: solid 1.5px $green;
+        color: $green;
+        &:hover {
+          background-color: $green;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+
+

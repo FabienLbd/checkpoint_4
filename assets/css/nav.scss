@@ -14,7 +14,16 @@ nav {
       font-family: $pacifico;
       font-size: 1.4rem;
     }
-
+  }
+  .admin {
+    .fa-user-tie {
+      font-size: 1.5rem;
+      color: $green;
+    }
+    .fa-times-circle {
+      font-size: 1.5rem;
+      color: $black;
+    }
   }
   background-color: $white;
 }

@@ -2,9 +2,15 @@
 
 namespace App\Entity;
 
+use DateTime;
 use Doctrine\ORM\Mapping as ORM;
+use Exception;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
+ * @Vich\Uploadable()
  * @ORM\Entity(repositoryClass="App\Repository\ActRepository")
  * @ORM\HasLifecycleCallbacks
  */
@@ -36,6 +42,17 @@ class Act
      * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $actImageName;
+
+    /**
+     * @var File
+     * @Vich\UploadableField(mapping="event", fileNameProperty="actImageName")
+     */
+    private $actImagefile;
 
     public function getId(): ?int
     {
@@ -107,5 +124,43 @@ class Act
     public function handleUpdateDate()
     {
         $this->setUpdatedAt(new \DateTimeImmutable());
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getActImageName()
+    {
+        return $this->actImageName;
+    }
+
+    /**
+     * @param mixed $actImageName
+     */
+    public function setActImageName($actImageName): void
+    {
+        $this->actImageName = $actImageName;
+    }
+
+    /**
+     * @return null|File
+     */
+    public function getActImagefile(): ?File
+    {
+        return $this->actImagefile;
+    }
+
+    /**
+     * @param File $actImagefile
+     * @return Act
+     * @throws Exception
+     */
+    public function setActImagefile(File $actImagefile): Act
+    {
+        $this->actImagefile = $actImagefile;
+        if ($this->actImagefile instanceof UploadedFile) {
+            $this->updatedAt = new DateTime();
+        }
+        return $this;
     }
 }

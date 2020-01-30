@@ -4,8 +4,23 @@
 
 {% block body %}
     <div class="event-background">
+        <div class="d-flex justify-content-end search-event mb-4">
+            <div>
+                <a class="nav-link text-dark" href="{{ path('wild_events') }}">
+                    <i class="fas fa-sync-alt mx-2"></i> Réinitialiser la recherche
+                </a>
+            </div>
+            {{ form_start(form) }}
+            <div class="d-flex align-items-center mx-2">
+                <div class="mx-2">{{ form_widget(form.searchText, {'attr' : {'placeholder': 'Entrer votre ville'}}) }}</div>
+                <div class="mx-2">
+                    <button class="btn btn-outline-dark">Rechercher</button>
+                </div>
+            </div>
+            {{ form_end(form) }}
+        </div>
         <div class="container show-events mx-auto">
-            <div class="text-center mb-5">
+            <div class="text-justify mb-5">
                 <h1>Nos évènements</h1>
             </div>
             {% for event in events %}

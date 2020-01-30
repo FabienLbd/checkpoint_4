@@ -1,8 +1,11 @@
-.show-acts {
-  margin-top: 3rem;
-  h1 {
-    font-family: $pacifico;
-    font-size: 4rem;
-    color: $lightBlack;
+.act-background {
+  background-color: $white;
+  .show-acts {
+    margin-top: 3rem;
+    h1 {
+      font-family: $pacifico;
+      font-size: 4rem;
+      color: $lightBlack;
+    }
   }
 }

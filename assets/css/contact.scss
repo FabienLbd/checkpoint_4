@@ -1,8 +1,11 @@
-.contact {
-  margin-top: 3rem;
-  h1 {
-    font-family: $pacifico;
-    font-size: 4rem;
-    color: $lightBlack;
+.contact-background {
+  background-color: $white;
+  .contact {
+    margin-top: 3rem;
+    h1 {
+      font-family: $pacifico;
+      font-size: 4rem;
+      color: $lightBlack;
+    }
   }
 }

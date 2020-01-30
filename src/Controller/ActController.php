@@ -38,7 +38,7 @@ class ActController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($act);
             $entityManager->flush();
-
+            $this->addFlash('success', 'Votre nouvelle performance à bien été ajoutée');
             return $this->redirectToRoute('act_index');
         }
 
@@ -68,7 +68,7 @@ class ActController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
-
+            $this->addFlash('success', 'Votre performance à bien été mis à jour');
             return $this->redirectToRoute('act_index');
         }
 
@@ -87,6 +87,7 @@ class ActController extends AbstractController
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($act);
             $entityManager->flush();
+            $this->addFlash('danger', 'Votre performance à bien été supprimée');
         }
 
         return $this->redirectToRoute('act_index');

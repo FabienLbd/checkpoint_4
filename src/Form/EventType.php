@@ -20,17 +20,28 @@ class EventType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name', TextType::class)
-            ->add('description', TextareaType::class)
-            ->add('country', CountryType::class)
-            ->add('town', TextType::class)
-            ->add('performanceDate', DateType::class)
+            ->add('name', TextType::class, [
+                'label' => 'Nom'
+            ])
+            ->add('description', TextareaType::class, [
+                'label' => 'Description'
+            ])
+            ->add('country', CountryType::class, [
+                'label' => 'Pays'
+            ])
+            ->add('town', TextType::class, [
+                'label' => 'Ville'
+            ])
+            ->add('performanceDate', DateType::class, [
+                'label' => 'Date'
+            ])
             ->add('prices', EntityType::class, [
                 'class'        => Price::class,
                 'choice_label' => 'name',
                 'expanded'     => true,
                 'multiple'     => true,
                 'by_reference' => false,
+                'label'        => 'Prix'
             ])
             ->add('eventImageFile', FileType::class, [
                 'label' => 'Image de l\'évènement',

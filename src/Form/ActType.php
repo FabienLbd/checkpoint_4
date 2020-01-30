@@ -14,8 +14,12 @@ class ActType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
+            ->add('name', null, [
+                'label' => 'Nom'
+            ])
+            ->add('description', null, [
+                'label' => 'Description'
+            ])
             ->add('actImageFile', FileType::class, [
                 'label' => 'Image de la prestation',
                 'required' => false,

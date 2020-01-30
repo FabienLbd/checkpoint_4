@@ -3,11 +3,11 @@
 {% block title %}Liste des tarifs{% endblock %}
 
 {% block body %}
-    <div class="container py-3">
+    <div class="container-fluid mx-0 px-0 py-3 price-index">
         <h1>Liste des tarifs</h1>
 
         <table class="table">
-            <thead>
+            <thead class="thead-dark">
                 <tr>
                     <th>Nom</th>
                     <th>Montant</th>
@@ -17,11 +17,11 @@
             <tbody>
             {% for price in prices %}
                 <tr>
-                    <td>{{ price.name }}</td>
-                    <td>{{ price.amount }}</td>
+                    <td>{{ price.name }} euros</td>
+                    <td>{{ price.amount }} euros</td>
                     <td>
-                        <a href="{{ path('price_show', {'id': price.id}) }}">Voir</a>
-                        <a href="{{ path('price_edit', {'id': price.id}) }}">Editer</a>
+                        <a href="{{ path('price_show', {'id': price.id}) }}"><i class="fas fa-eye"></i></a>
+                        <a href="{{ path('price_edit', {'id': price.id}) }}"><i class="fas fa-pencil-alt"></i></a>
                     </td>
                 </tr>
             {% else %}
@@ -31,6 +31,8 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{{ path('price_new') }}">Create un tarif</a>
+        <div class=" container-fluid d-flex justify-content-end">
+            <a class="btn btn-outline-success" href="{{ path('price_new') }}">Create un tarif</a>
+        </div>
     </div>
 {% endblock %}

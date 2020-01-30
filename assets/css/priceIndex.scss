@@ -1,4 +1,4 @@
-.event-index {
+.price-index {
   .fa-eye {
     color: $green;
     font-size: 1.3rem;
@@ -14,17 +14,21 @@
     font-family: $roboto;
   }
 }
-.event-show {
+.price-show {
   margin-top: 7rem;
   h1 {
     font-family: $pacifico;
     color: $green;
   }
 }
-.event-edit {
+.price-edit {
   margin-top: 7rem;
+  h1 {
+    font-family: $pacifico;
+    color: $green;
+  }
 }
-.event-new {
+.price-new {
   margin-top: 7rem;
   h1 {
     font-family: $pacifico;

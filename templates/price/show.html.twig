@@ -3,28 +3,24 @@
 {% block title %}Price{% endblock %}
 
 {% block body %}
-    <h1>Price</h1>
-
-    <table class="table">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ price.id }}</td>
-            </tr>
-            <tr>
-                <th>Name</th>
-                <td>{{ price.name }}</td>
-            </tr>
-            <tr>
-                <th>Amount</th>
-                <td>{{ price.amount }}</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <a href="{{ path('price_index') }}">back to list</a>
-
-    <a href="{{ path('price_edit', {'id': price.id}) }}">edit</a>
-
-    {{ include('price/_delete_form.html.twig') }}
+    <div class="container price-show">
+        <h1>Prix</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{ price.name }}</td>
+                </tr>
+                <tr>
+                    <th>Montant</th>
+                    <td>{{ price.amount }} euros</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-flex justify-content-between">
+            <a class="btn btn-outline-success" href="{{ path('price_index') }}">Revenir à la liste</a>
+            <a class="btn btn-outline-success" href="{{ path('price_edit', {'id': price.id}) }}">Editer</a>
+            {{ include('price/_delete_form.html.twig') }}
+        </div>
+    </div>
 {% endblock %}

@@ -17,7 +17,7 @@ class ActType extends AbstractType
             ->add('name')
             ->add('description')
             ->add('actImageFile', FileType::class, [
-                'label' => 'Image de la prestaton',
+                'label' => 'Image de la prestation',
                 'required' => false,
                 'constraints' => [
                     new File([

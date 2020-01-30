@@ -5,11 +5,15 @@ namespace App\Controller;
 use App\Entity\Act;
 use App\Entity\Event;
 use App\Entity\EventSearch;
+use App\Entity\Price;
 use App\Form\ContactType;
 use App\Form\EventSearchType;
+use App\Form\TicketingType;
+use App\Service\QuotationCalculator;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Mailer\Exception\TransportExceptionInterface;
@@ -91,5 +95,51 @@ class WildController extends AbstractController
         return $this->render('wild/contact.html.twig', [
             'form' => $form->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/ticketing", name="ticketing")
+     */
+    public function ticketing()
+    {
+        $form = $this->createForm(TicketingType::class);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+
+        }
+
+        return $this->render('wild/ticketing.html.twig', [
+            'form' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/ticketPrice")
+     * @param Request $request
+     * @return JsonResponse
+     */
+    public function priceCalculation(
+        Request $request,
+        EntityManagerInterface $em
+    ) {
+        $adultTicket = $em->getRepository(Price::class)->findOneBy(['name' => 'Adulte'])->getAmount();
+        $childTicket = $em->getRepository(Price::class)->findOneBy(['name' => 'Enfants'])->getAmount();
+        $seniorTicket = $em->getRepository(Price::class)->findOneBy(['name' => 'Senior'])->getAmount();
+
+        $ticketing = json_decode(
+            $request->getContent(),
+            true
+        );
+        $totalAdultPrice = $ticketing['nbAdult'] * $adultTicket;
+        $totalChildPrice = $ticketing['nbChild'] * $childTicket;
+        $totalSeniorPrice = $ticketing['nbSenior'] * $seniorTicket;
+        $totalPrice = $totalAdultPrice + $totalChildPrice + $totalSeniorPrice;
+
+        return new JsonResponse([
+            'total_adult_price' => number_format($totalAdultPrice, 2, ',', ''),
+            'total_child_price' => number_format($totalChildPrice, 2, ',', ''),
+            'total_senior_price' => number_format($totalSeniorPrice, 2, ',', ''),
+            'total_price' => number_format($totalPrice, 2, ',', ''),
+        ], 200);
     }
 }

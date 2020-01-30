@@ -1,0 +1,28 @@
+.ticketing {
+  margin-top: 7rem;
+  h1 {
+    font-family: $pacifico;
+    font-size: 4rem;
+    color: $lightBlack;
+  }
+  .price-box {
+    .box-head {
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      background-color: $green;
+    }
+    .box-bottom {
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      background-color: $white;
+      color: $green;
+    }
+    h3 {
+      font-family: $pacifico;
+      color: $black;
+    }
+    font-family: $roboto;
+    color: $black;
+    font-size: 1.5rem;
+  }
+}

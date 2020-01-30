@@ -11,12 +11,12 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/price")
+ * @Route("admin/price")
  */
 class PriceController extends AbstractController
 {
     /**
-     * @Route("/", name="price_index", methods={"GET"})
+     * @Route("", name="price_index", methods={"GET"})
      */
     public function index(PriceRepository $priceRepository): Response
     {

@@ -3,18 +3,18 @@
 {% block title %}Liste des évènements{% endblock %}
 
 {% block body %}
-    <div class="container py-3">
+    <div class="container-fluid mx-0 px-0 py-3 event-index">
         <h1>Liste des évènements</h1>
-        <table class="table">
-            <thead>
+        <table class="table table-hover">
+            <thead class="thead-dark">
                 <tr>
                     <th>Nom</th>
                     <th>Description</th>
                     <th>Pays</th>
                     <th>Ville</th>
-                    <th>Date de la performance</th>
+                    <th>Date</th>
                     <th>Créé le</th>
-                    <th>Mis à jour le</th>
+                    <th>Mis à jour</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -29,8 +29,8 @@
                     <td>{{ event.createdAt ? event.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>{{ event.updatedAt ? event.updatedAt|date('Y-m-d H:i:s') : '' }}</td>
                     <td>
-                        <a href="{{ path('event_show', {'id': event.id}) }}">Voir</a>
-                        <a href="{{ path('event_edit', {'id': event.id}) }}">Editer</a>
+                        <a class="nav-link" href="{{ path('event_show', {'id': event.id}) }}"><i class="fas fa-eye"></i></a>
+                        <a class="nav-link" href="{{ path('event_edit', {'id': event.id}) }}"><i class="fas fa-pencil-alt"></i></a>
                     </td>
                 </tr>
             {% else %}
@@ -40,6 +40,8 @@
             {% endfor %}
             </tbody>
         </table>
-        <a href="{{ path('event_new') }}">Créer un évènement</a>
+        <div class="d-flex justify-content-center">
+            <a class="btn btn-outline-success" href="{{ path('event_new') }}">Créer un évènement</a>
+        </div>
     </div>
 {% endblock %}

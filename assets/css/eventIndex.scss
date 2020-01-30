@@ -1,0 +1,26 @@
+.event-index {
+  .fa-eye {
+    color: $green;
+    font-size: 1.3rem;
+  }
+  .fa-pencil-alt {
+    color: $green;
+    font-size: 1.3rem;
+  }
+  th {
+    font-family: $pacifico;
+  }
+  td {
+    font-family: $roboto;
+  }
+}
+.event-show {
+  margin-top: 7rem;
+  h1 {
+    font-family: $pacifico;
+    color: $green;
+  }
+}
+.event-edit {
+  margin-top: 7rem;
+}

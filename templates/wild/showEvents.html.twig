@@ -4,12 +4,10 @@
 
 {% block body %}
     <div class="event-background">
-        <div class="d-flex justify-content-end search-event mb-4">
-            <div>
-                <a class="nav-link text-dark" href="{{ path('wild_events') }}">
-                    <i class="fas fa-sync-alt mx-2"></i> Réinitialiser la recherche
-                </a>
-            </div>
+        <div class=" container-fluid d-flex justify-content-end search-event mb-4">
+            <a class="nav-link text-dark" href="{{ path('wild_events') }}">
+                <i class="fas fa-sync-alt mx-2"></i> Rafraichir
+            </a>
             {{ form_start(form) }}
             <div class="d-flex align-items-center mx-2">
                 <div class="mx-2">{{ form_widget(form.searchText, {'attr' : {'placeholder': 'Entrer votre ville'}}) }}</div>
@@ -29,14 +27,14 @@
                         <img src="/uploads/event/{{ event.eventImageName }}"
                               alt="...">
                     </div>
-                    <div class="card-body text-justify col-sm-12 col-lg-7 offset-md-1">
+                    <div class="card-body text-center col-sm-12 col-lg-7 offset-md-1">
                         <h2>{{ event.name }}</h2>
                         <p>{{ event.description }}</p>
                         <p>Date du show : {{ event.performanceDate|date("m/d/Y") }} <br>
                            Lieu du show : {{ event.town }} {{ event.country }}
                         </p>
                         <div>
-                            <table class="p-2">
+                            <table class="p-2 mx-auto">
                                 <thead>
                                     <tr>
                                         <th>Tarif : </th>

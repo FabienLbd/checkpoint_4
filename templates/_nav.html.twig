@@ -3,34 +3,36 @@
 
         <i class="fas fa-hamburger"></i>
     </button>
-    <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-        <a class="navbar-brand brand" href="{{ path('home') }}">Wild Circus</a>
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-5 nav-list">
-            <li class="nav-item">
+    <div class="collapse navbar-collapse text-center" id="navbarTogglerDemo01">
+        <a class="navbar-brand brand text-center m-0" href="{{ path('home') }}">Wild Circus</a>
+        <ul class="navbar-nav mx-auto mt-2 mt-lg-0 nav-list">
+            <li class="nav-item text-center">
                 <a class="{{ app.request.get('_route') == 'wild_acts'? 'active nav-link' : 'nav-link' }}"
-                   href="{{ path('wild_acts') }}">Performance</a>
+                   href="{{ path('wild_acts') }}">Performances</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-center">
                 <a class="{{ app.request.get('_route') == 'wild_events'? 'active nav-link' : 'nav-link' }}"
                    href="{{ path('wild_events') }}">Evènements</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-center">
                 <a class="{{ app.request.get('_route') == 'wild_ticketing'? 'active nav-link' : 'nav-link' }}"
                    href="{{ path('wild_ticketing') }}">Tarifs</a>
             </li>
-            <li class="nav-item">
+            <li class="nav-item text-center">
                 <a class="{{ app.request.get('_route') == 'wild_contact'? 'active nav-link' : 'nav-link' }}"
                    href="{{ path('wild_contact') }}">Contact</a>
             </li>
         </ul>
         <ul class="navbar-nav admin">
             {% if app.user %}
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ path('admin') }}"><i class="fas fa-user-tie"></i></a>
-                </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="{{ path('app_logout') }}"><i class="far fa-times-circle"></i></a>
-                </li>
+                <div class="d-flex justify-content-center">
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="{{ path('admin') }}"><i class="fas fa-user-tie"></i></a>
+                    </li>
+                    <li class="nav-item mx-2">
+                        <a class="nav-link" href="{{ path('app_logout') }}"><i class="far fa-times-circle"></i></a>
+                    </li>
+                </div>
             {% endif %}
         </ul>
     </div>

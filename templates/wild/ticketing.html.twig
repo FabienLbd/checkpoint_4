@@ -3,15 +3,15 @@
 {% block title %}Billeterie{% endblock %}
 
 {% block body %}
-    <div class="container ticketing">
-        <h1 class="mb-3 text-center">Tarifs</h1>
+    <div class="container ticketing mb-2">
+        <h1 class="mb-5 text-center">Tarifs</h1>
         <div class="d-flex justify-content-center row">
-            <div class="col-md-7 col-lg-7">
+            <div class="col-md-6 col-lg-6">
                 {{ form_start(form) }}
                     {{ form_widget(form) }}
                 {{ form_end(form) }}
             </div>
-            <div class="price-box col-md-4 col-lg-4">
+            <div class="price-box col-md-6 col-lg-4 offset-lg-1">
                 <div class="text-center py-3 box-head">
                     <h3>Prix</h3>
                 </div>

@@ -1,12 +1,30 @@
 nav {
+  .navbar-toggler {
+    .fa-hamburger {
+      color: $green;
+      font-size: 2rem;
+      &:hover {
+        color: $black;
+      }
+    }
+  }
   .brand {
     font-family: $pacifico;
     font-size: 2rem;
     color: $black;
+    &:hover {
+      color: $green;
+    }
   }
   .navbar-nav {
+    .active {
+      text-decoration: underline;
+    }
     .nav-link {
       color: $green;
+      &:hover {
+        color: $black;
+      }
     }
   }
   .nav-list {
@@ -19,10 +37,16 @@ nav {
     .fa-user-tie {
       font-size: 1.5rem;
       color: $green;
+      &:hover {
+        color: $black;
+      }
     }
     .fa-times-circle {
       font-size: 1.5rem;
       color: $black;
+      &:hover {
+        color: red;
+      }
     }
   }
   background-color: $white;

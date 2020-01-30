@@ -9,7 +9,6 @@ use App\Entity\Price;
 use App\Form\ContactType;
 use App\Form\EventSearchType;
 use App\Form\TicketingType;
-use App\Service\QuotationCalculator;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;

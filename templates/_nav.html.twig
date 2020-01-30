@@ -1,21 +1,26 @@
 <nav class="navbar navbar-expand-lg bg-light fixed-top">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+
+        <i class="fas fa-hamburger"></i>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
         <a class="navbar-brand brand" href="{{ path('home') }}">Wild Circus</a>
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0 ml-5 nav-list">
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('wild_acts') }}">Performance</a>
+                <a class="{{ app.request.get('_route') == 'wild_acts'? 'active nav-link' : 'nav-link' }}"
+                   href="{{ path('wild_acts') }}">Performance</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('wild_events') }}">Evènements</a>
+                <a class="{{ app.request.get('_route') == 'wild_events'? 'active nav-link' : 'nav-link' }}"
+                   href="{{ path('wild_events') }}">Evènements</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('wild_ticketing') }}">Tarifs</a>
+                <a class="{{ app.request.get('_route') == 'wild_ticketing'? 'active nav-link' : 'nav-link' }}"
+                   href="{{ path('wild_ticketing') }}">Tarifs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="{{ path('wild_contact') }}">Contact</a>
+                <a class="{{ app.request.get('_route') == 'wild_contact'? 'active nav-link' : 'nav-link' }}"
+                   href="{{ path('wild_contact') }}">Contact</a>
             </li>
         </ul>
         <ul class="navbar-nav admin">

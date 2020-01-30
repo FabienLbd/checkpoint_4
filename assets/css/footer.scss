@@ -5,5 +5,8 @@ footer {
   .fa-facebook-f, .fa-linkedin-in, .fa-twitter {
     color: $white;
     font-size: 2rem;
+    &:hover {
+      color: $black;
+    }
   }
 }

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+{% apply inky_to_html %}
+    <container style="font-family: Arial,sans-serif;">
+        <container>
+            <row>
+                <columns>
+                    <img src="https://images.pexels.com/photos/2337777/pexels-photo-2337777.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260" style="width: 50%;" alt="">
+                </columns>
+            </row>
+        </container>
+        <container style="margin: 0 15vw;">
+            <h1 style="font-size: 1.5rem;">Une nouvelle personne à besoin d'informations !</h1>
+            <h4>Détails :</h4>
+            <ul style="font-weight: normal; list-style-type: none; padding: 0;">
+                <li>{{ clients_infos.firstname }} {{ clients_infos.lastname }}</li>
+                <li>Email : {{ clients_infos.email }}</li>
+                <li>Téléphone : {{ clients_infos.phone }}</li>
+                <p>Message : {{ clients_infos.message }}</p>
+            </ul>
+        </container>
+    </container>
+{% endapply %}
+</body>
+</html>

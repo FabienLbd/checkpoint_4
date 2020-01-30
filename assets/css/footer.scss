@@ -1,0 +1,9 @@
+footer {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+  background-color: $green;
+  .fa-facebook-f, .fa-linkedin-in, .fa-twitter {
+    color: $white;
+    font-size: 2rem;
+  }
+}

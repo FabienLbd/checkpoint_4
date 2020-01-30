@@ -20,6 +20,13 @@ class EventSearchType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => EventSearch::class,
+            'method'     => 'get',
+            'csrf_protection' => false,
         ]);
+    }
+
+    public function getBlockPrefix()
+    {
+        return '';
     }
 }

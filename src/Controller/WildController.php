@@ -103,10 +103,6 @@ class WildController extends AbstractController
     {
         $form = $this->createForm(TicketingType::class);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-        }
-
         return $this->render('wild/ticketing.html.twig', [
             'form' => $form->createView(),
         ]);

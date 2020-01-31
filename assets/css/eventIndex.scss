@@ -1,4 +1,5 @@
 .event-index {
+  min-height: 100vh;
   .fa-eye {
     color: $green;
     font-size: 1.3rem;
@@ -16,6 +17,7 @@
 }
 .event-show {
   margin-top: 7rem;
+  min-height: 100vh;
   h1 {
     font-family: $pacifico;
     color: $green;
@@ -23,9 +25,11 @@
 }
 .event-edit {
   margin-top: 7rem;
+  min-height: 100vh;
 }
 .event-new {
   margin-top: 7rem;
+  min-height: 100vh;
   h1 {
     font-family: $pacifico;
     color: $green;

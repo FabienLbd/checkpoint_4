@@ -31,10 +31,10 @@
         "symfony/yaml": "4.4.*",
         "twig/inky-extra": "^3.0",
         "vich/uploader-bundle": "^1.13",
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
       "ext-json": "*"
     },
     "require-dev": {
+        "doctrine/doctrine-fixtures-bundle": "^3.3",
         "symfony/debug-pack": "*",
         "symfony/maker-bundle": "^1.0",
         "symfony/profiler-pack": "*",
@@ -76,8 +76,7 @@
             "@auto-scripts"
         ],
         "compile": [
-            "php bin/console doctrine:migrations:migrate",
-            "php bin/console doctrine:fixtures:load --no-interaction --env=PROD"
+            "php bin/console doctrine:migrations:migrate"
         ]
     },
     "conflict": {
